@@ -67,7 +67,3 @@ FinAI uses a suite of 6 specialized tools to execute precise calculations and fe
 - **Key Confidentiality**: API keys entered in the sidebar reside strictly in memory for the active session and are never logged or stored.
 
 ---
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
