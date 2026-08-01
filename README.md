@@ -51,36 +51,6 @@ FinAI uses a suite of 6 specialized tools to execute precise calculations and fe
 
 ---
 
-## 💻 Quick Start Guide
-
-### 1. Prerequisites
-Python 3.9 or higher installed on your system.
-
-### 2. Clone Repository & Setup Virtual Environment
-```bash
-git clone https://github.com/your-username/Financle_Agent_Langchain.git
-cd Financle_Agent_Langchain
-
-python -m venv venv
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run Application
-```bash
-streamlit run app.py
-```
-Access the application at `http://localhost:8501`.
-
----
-
 ## 🛠️ Tech Stack
 
 - **UI Framework**: [Streamlit](https://streamlit.io/) with Custom CSS Glassmorphism
