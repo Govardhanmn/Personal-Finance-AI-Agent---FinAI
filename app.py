@@ -181,17 +181,39 @@ st.markdown("""
         margin-bottom: 0.8rem;
     }
 
-    /* Sidebar Input Overrides */
-    [data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"],
-    [data-testid="stSidebar"] input {
+    /* Sidebar Input Overrides — Targeting Outer Wrappers strictly */
+    [data-testid="stSidebar"] div[data-baseweb="select"] > div,
+    [data-testid="stSidebar"] div[data-baseweb="input"] {
         background: rgba(15, 23, 42, 0.6) !important;
         border: 1px solid rgba(59, 130, 246, 0.3) !important;
         border-radius: 12px !important;
         color: #f8fafc !important;
     }
 
-    /* Sidebar Reset Button */
-    [data-testid="stSidebar"] button {
+    [data-testid="stSidebar"] input {
+        background: transparent !important;
+        border: none !important;
+        color: #f8fafc !important;
+    }
+
+    /* Reset Icon Buttons inside Inputs (Tooltip ?, Dropdown arrow, Eye icon) */
+    [data-testid="stSidebar"] [data-testid="stTooltipIcon"] button,
+    [data-testid="stSidebar"] div[data-baseweb="select"] button,
+    [data-testid="stSidebar"] div[data-baseweb="input"] button,
+    [data-testid="stSidebar"] button[aria-label="Show password"],
+    [data-testid="stSidebar"] button[aria-label="Hide password"] {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        width: auto !important;
+        height: auto !important;
+    }
+
+    /* Sidebar Reset Action Button Only */
+    [data-testid="stSidebar"] div.stButton > button {
         background: linear-gradient(135deg, #2563eb, #475569) !important;
         border: none !important;
         border-radius: 12px !important;
@@ -199,6 +221,7 @@ st.markdown("""
         font-weight: 600 !important;
         box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4) !important;
         padding: 10px 16px !important;
+        width: 100% !important;
     }
 
     /* Main Block Container */
@@ -543,8 +566,7 @@ with st.sidebar:
     provider = st.selectbox(
         "LLM Provider",
         provider_options,
-        index=0,
-        help="Choose your preferred AI infrastructure provider."
+        index=0
     )
 
     # 2. Text Input Field: Enter API Key (masked)
@@ -554,8 +576,7 @@ with st.sidebar:
             "API Key",
             type="password",
             value=default_key,
-            placeholder="sk-...",
-            help="Enter your OpenAI API key."
+            placeholder="sk-..."
         )
         if api_key:
             os.environ["OPENAI_API_KEY"] = api_key
@@ -567,8 +588,7 @@ with st.sidebar:
             "API Key",
             type="password",
             value=default_key,
-            placeholder="AIzaSy...",
-            help="Enter your Google Gemini API key."
+            placeholder="AIzaSy..."
         )
         if api_key:
             os.environ["GOOGLE_API_KEY"] = api_key
@@ -580,8 +600,7 @@ with st.sidebar:
             "API Key",
             type="password",
             value=default_key,
-            placeholder="sk-ant-...",
-            help="Enter your Anthropic Claude API key."
+            placeholder="sk-ant-..."
         )
         if api_key:
             os.environ["ANTHROPIC_API_KEY"] = api_key
@@ -593,14 +612,13 @@ with st.sidebar:
     selected_model = st.selectbox(
         "Select Model",
         model_options,
-        index=0,
-        help="Model engine version"
+        index=0
     )
 
     temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.0, step=0.1)
 
     # 4. Button: Reset Conversation
-    if st.button("🔄 Reset Conversation", width="stretch"):
+    if st.button("🔄 Reset Conversation"):
         st.session_state.messages = []
         st.rerun()
 
