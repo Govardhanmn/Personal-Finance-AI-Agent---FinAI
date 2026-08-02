@@ -664,43 +664,50 @@ with st.sidebar:
     )
 
     # 2. Text Input Field: Enter API Key (masked)
-    if provider == "OpenAI":
-        default_key = os.getenv("OPENAI_API_KEY", "")
-        api_key = st.text_input(
-            "API Key",
-            type="password",
-            value=default_key,
-            placeholder="sk-..."
-        )
-        if api_key:
-            os.environ["OPENAI_API_KEY"] = api_key
-        model_options = ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo"]
-
-    elif provider == "Google Gemini":
-        default_key = os.getenv("GOOGLE_API_KEY", "")
-        api_key = st.text_input(
-            "API Key",
-            type="password",
-            value=default_key,
-            placeholder="AIzaSy..."
-        )
-        if api_key:
-            os.environ["GOOGLE_API_KEY"] = api_key
-        model_options = ["gemini-2.0-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
-
-    elif provider == "Anthropic":
-        default_key = os.getenv("ANTHROPIC_API_KEY", "")
-        api_key = st.text_input(
-            "API Key",
-            type="password",
-            value=default_key,
-            placeholder="sk-ant-..."
-        )
-        if api_key:
-            os.environ["ANTHROPIC_API_KEY"] = api_key
-        model_options = ["claude-3-5-sonnet-20241022", "claude-3-haiku-20240307"]
-
-    st.caption("🛡️ Your API key is stored securely.")
+     if "api_keys" not in st.session_state:
+        st.session_state.api_keys = {
+            "OpenAI": os.getenv("OPENAI_API_KEY", ""),
+            "Google Gemini": os.getenv("GOOGLE_API_KEY", ""),
+        }
+    env_var_map = {
+        "OpenAI": "OPENAI_API_KEY",
+        "Google Gemini": "GOOGLE_API_KEY",
+    }
+    placeholder_map = {
+        "OpenAI": "sk-...",
+        "Google Gemini": "AIzaSy...",
+    }
+    model_options_map = {
+        "OpenAI": ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo"],
+        "Google Gemini": ["gemini-2.0-flash", "gemini-1.5-pro", "gemini-1.5-flash"],
+    }
+    current_env_var = env_var_map[provider]
+    model_options = model_options_map.get(provider, ["gpt-4o-mini"])
+    # Fetch stored key for current provider
+    current_key = st.session_state.api_keys.get(provider, "")
+    api_key_input = st.text_input(
+        "API Key",
+        type="password",
+        value=current_key,
+        placeholder=placeholder_map[provider],
+        key=f"widget_key_{provider}"
+    )
+    # Sync state and process environment cleanly
+    if api_key_input:
+        st.session_state.api_keys[provider] = api_key_input
+        os.environ[current_env_var] = api_key_input
+    else:
+        st.session_state.api_keys[provider] = ""
+        os.environ.pop(current_env_var, None)
+    # Clear Button: Allows user to immediately wipe the API key from volatile session memory
+    if current_key or api_key_input:
+        if st.button("🗑️ Clear API Key", key=f"clear_key_{provider}"):
+            st.session_state.api_keys[provider] = ""
+            os.environ.pop(current_env_var, None)
+            if f"widget_key_{provider}" in st.session_state:
+                st.session_state[f"widget_key_{provider}"] = ""
+            st.rerun()
+    st.caption("🛡️ **Volatile Session Memory**: API keys are never stored on disk or files. They exist strictly in volatile memory during your active session.")
 
     # 3. Dropdown: Select Model
     selected_model = st.selectbox(
