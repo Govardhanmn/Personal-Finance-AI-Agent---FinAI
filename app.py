@@ -729,7 +729,6 @@ with st.sidebar:
             args=(provider, current_env_var)
         )
 
-    st.caption("🛡️ **Volatile Session Memory**: API keys start blank and exist strictly in temporary memory during your active session.")
 
     # 3. Dropdown: Select Model
     selected_model = st.selectbox(
