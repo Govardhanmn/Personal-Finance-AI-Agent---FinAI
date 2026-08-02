@@ -286,17 +286,17 @@ st.markdown("""
         box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
     }
     
-    /* TIGHT ZERO-GAP HEADER TYPOGRAPHY */
-    h1.main-header-title,
-    .main-header-title,
-    div.main-header-banner h1 {
+    /* ABSOLUTE GAPLESS HEADER TYPOGRAPHY USING DIV (BYPASSES STREAMLIT CLOUD H1 MARGIN INJECTION) */
+    .main-header-title {
         font-family: 'Poppins', sans-serif !important;
         font-size: 1.55rem !important;
         margin: 0 !important;
         padding: 0 !important;
         margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
         line-height: 1.15 !important;
         letter-spacing: -0.02em !important;
+        display: block !important;
     }
     .fin-brand-bold {
         font-weight: 700 !important;
@@ -315,16 +315,15 @@ st.markdown("""
         -webkit-text-fill-color: #cbd5e1 !important;
         display: inline-block !important;
     }
-    .main-header-sub,
-    div.main-header-banner div.main-header-sub {
+    .main-header-sub {
         font-family: 'Poppins', sans-serif !important;
         font-size: 0.76rem !important;
         color: #94a3b8 !important;
+        margin: 0 !important;
         margin-top: 2px !important;
-        padding-top: 0px !important;
-        margin-bottom: 0px !important;
-        font-weight: 400 !important;
+        padding: 0 !important;
         line-height: 1.25 !important;
+        display: block !important;
     }
 
     /* Right Side Feature Badges */
@@ -874,16 +873,16 @@ def get_agent():
 
 
 # ---------------------------------------------------------
-# MAIN PAGE HEADER
+# MAIN PAGE HEADER (DIV-BASED TYPOGRAPHY FOR ZERO DEPLOYMENT GAP)
 # ---------------------------------------------------------
 st.markdown("""
 <div class="main-header-banner">
     <div class="main-header-left">
         <div class="glowing-sparkle-badge">✨</div>
         <div>
-            <h1 class="main-header-title">
+            <div class="main-header-title">
                 <span class="fin-brand-bold">FinAI</span> <span class="fin-sub-regular">– Your Smart Financial Companion</span>
-            </h1>
+            </div>
             <div class="main-header-sub">Personalized financial insights, planning tools, and real-time guidance.</div>
         </div>
     </div>
