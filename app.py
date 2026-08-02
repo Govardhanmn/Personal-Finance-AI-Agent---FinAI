@@ -151,14 +151,41 @@ st.markdown("""
         display: block !important;
     }
 
+    /* FIX PASSWORD EYE BUTTON TEXT LEAK ON STREAMLIT CLOUD */
+    button[aria-label="Show password"],
+    button[aria-label="Hide password"],
+    [data-baseweb="input"] button {
+        font-size: 0 !important;
+        line-height: 0 !important;
+        color: transparent !important;
+        overflow: hidden !important;
+    }
+
+    button[aria-label="Show password"] *,
+    button[aria-label="Hide password"] *,
+    [data-baseweb="input"] button * {
+        display: none !important;
+        font-size: 0 !important;
+        color: transparent !important;
+    }
+
+    button[aria-label="Show password"]::before,
+    button[aria-label="Hide password"]::before,
+    [data-baseweb="input"] button::before {
+        content: "👁" !important;
+        font-size: 1.1rem !important;
+        color: #38bdf8 !important;
+        opacity: 0.85 !important;
+        display: block !important;
+        line-height: 1 !important;
+    }
+
     /* PRESERVE STREAMLIT MATERIAL SYMBOLS & ICON FONTS FROM OVERRIDES */
     .material-symbols-outlined,
     .material-symbols-rounded,
     .material-icons,
     [data-testid="stIcon"],
-    [data-testid="stIcon"] *,
-    button[aria-label="Show password"] *,
-    button[aria-label="Hide password"] * {
+    [data-testid="stIcon"] * {
         font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Icons' !important;
         font-weight: normal !important;
         font-style: normal !important;
