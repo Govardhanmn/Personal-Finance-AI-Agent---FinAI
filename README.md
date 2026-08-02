@@ -1,4 +1,4 @@
-# 💳 FinAI – Your Wealth Assistant
+# 💳 FinAI – Your Personal Finance AI Agent
 
 > **Personalized financial insights, planning tools, and real-time guidance.**
 
