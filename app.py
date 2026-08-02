@@ -12,12 +12,6 @@ from langchain.tools import tool
 from langchain.agents import create_agent
 from langchain_community.tools import DuckDuckGoSearchRun
 
-# Optional Anthropic import
-try:
-    from langchain_anthropic import ChatAnthropic
-    HAS_ANTHROPIC = True
-except ImportError:
-    HAS_ANTHROPIC = False
 
 # Safe import for PythonREPLTool with fallback to custom calculator tool
 try:
@@ -654,8 +648,6 @@ with st.sidebar:
 
     # 1. Dropdown: Select LLM Provider
     provider_options = ["OpenAI", "Google Gemini"]
-    if HAS_ANTHROPIC:
-        provider_options.append("Anthropic")
 
     provider = st.selectbox(
         "LLM Provider",
@@ -674,20 +666,17 @@ with st.sidebar:
 
     env_var_map = {
         "OpenAI": "OPENAI_API_KEY",
-        "Google Gemini": "GOOGLE_API_KEY",
-        "Anthropic": "ANTHROPIC_API_KEY"
+        "Google Gemini": "GOOGLE_API_KEY"
     }
 
     placeholder_map = {
         "OpenAI": "sk-...",
-        "Google Gemini": "AIzaSy...",
-        "Anthropic": "sk-ant-..."
+        "Google Gemini": "AIzaSy..."
     }
 
     model_options_map = {
         "OpenAI": ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo"],
-        "Google Gemini": ["gemini-2.0-flash", "gemini-1.5-pro", "gemini-1.5-flash"],
-        "Anthropic": ["claude-3-5-sonnet-20241022", "claude-3-haiku-20240307"]
+        "Google Gemini": ["gemini-2.0-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
     }
 
     current_env_var = env_var_map[provider]
