@@ -642,7 +642,7 @@ with st.sidebar:
     # Top Branding Header
     st.markdown("""
     <div class="sidebar-brand-box">
-        <div class="sidebar-brand-icon">🤖💰</div>
+        <div class="sidebar-brand-icon">🤖</div>
         <div>
             <div class="sidebar-brand-title">FinAI</div>
             <div class="sidebar-brand-sub">Next-Generation Financial Intelligence</div>
@@ -964,10 +964,10 @@ def get_agent():
 st.markdown("""
 <div class="main-header-banner">
     <div class="main-header-left">
-        <div class="glowing-sparkle-badge">✨</div>
+        <div class="glowing-sparkle-badge">🤖</div>
         <div>
             <div class="main-header-title">
-                <span class="fin-brand-bold">FinAI</span> <span class="fin-sub-regular">– Your Smart Financial Companion</span>
+                <span class="fin-brand-bold">FinAI</span> <span class="fin-sub-regular">– Your Personal Finance AI-Agent</span>
             </div>
             <div class="main-header-sub">Personalized financial insights, planning tools, and real-time guidance.</div>
         </div>
@@ -985,13 +985,6 @@ st.markdown("""
             <div>
                 <div class="feature-title">Goal Planning</div>
                 <div class="feature-sub">Plan and track your financial goals</div>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🛡️</div>
-            <div>
-                <div class="feature-title">Secure & Private</div>
-                <div class="feature-sub">Your data is safe and encrypted</div>
             </div>
         </div>
     </div>
