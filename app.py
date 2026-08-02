@@ -42,8 +42,8 @@ load_dotenv()
 
 # Page configuration
 st.set_page_config(
-    page_title="FinAI – Your Smart Financial Companion",
-    page_icon="💳",
+    page_title="FinAI – Your Personal Finance AI Agent",
+    page_icon="💸",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -642,7 +642,7 @@ with st.sidebar:
     # Top Branding Header
     st.markdown("""
     <div class="sidebar-brand-box">
-        <div class="sidebar-brand-icon">✨</div>
+        <div class="sidebar-brand-icon">🤖</div>
         <div>
             <div class="sidebar-brand-title">FinAI</div>
             <div class="sidebar-brand-sub">Your Smart Financial Companion</div>
