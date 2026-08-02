@@ -2,7 +2,7 @@
 
 > **Personalized financial insights, planning tools, and real-time guidance.**
 
-FinAI is an intelligent, agentic AI personal finance assistant built specifically for Indian users. Powered by **LangChain**, **Streamlit**, and multi-provider LLMs (OpenAI, Google Gemini, Anthropic Claude), FinAI provides tool-driven financial calculations, investment compounding models, budget allocation strategies, and live financial market search.
+FinAI is an intelligent, agentic AI personal finance assistant built specifically for Indian users. Powered by **LangChain**, **Streamlit**, and multi-provider LLMs (OpenAI, Google Gemini), FinAI provides tool-driven financial calculations, investment compounding models, budget allocation strategies, and live financial market search.
 
 ---
 
