@@ -664,12 +664,12 @@ with st.sidebar:
     )
 
     # 2. Text Input Field: Enter API Key (masked)
-    # Managed in-memory API key state per provider
+    # Managed volatile in-memory API key state (starts empty on app open)
     if "api_keys" not in st.session_state:
         st.session_state.api_keys = {
-            "OpenAI": os.getenv("OPENAI_API_KEY", ""),
-            "Google Gemini": os.getenv("GOOGLE_API_KEY", ""),
-            "Anthropic": os.getenv("ANTHROPIC_API_KEY", "")
+            "OpenAI": "",
+            "Google Gemini": "",
+            "Anthropic": ""
         }
 
     env_var_map = {
@@ -693,15 +693,23 @@ with st.sidebar:
     current_env_var = env_var_map[provider]
     model_options = model_options_map.get(provider, ["gpt-4o-mini"])
 
-    # Fetch stored key for current provider
-    current_key = st.session_state.api_keys.get(provider, "")
+    # Callback function executed BEFORE widget rendering to prevent Streamlit crash
+    def clear_api_key_callback(target_provider, env_var):
+        st.session_state.api_keys[target_provider] = ""
+        widget_key = f"widget_key_{target_provider}"
+        if widget_key in st.session_state:
+            st.session_state[widget_key] = ""
+        os.environ.pop(env_var, None)
+
+    widget_key_name = f"widget_key_{provider}"
+    if widget_key_name not in st.session_state:
+        st.session_state[widget_key_name] = st.session_state.api_keys.get(provider, "")
 
     api_key_input = st.text_input(
         "API Key",
         type="password",
-        value=current_key,
         placeholder=placeholder_map.get(provider, "Enter API Key..."),
-        key=f"widget_key_{provider}"
+        key=widget_key_name
     )
 
     # Sync state and process environment cleanly
@@ -712,16 +720,16 @@ with st.sidebar:
         st.session_state.api_keys[provider] = ""
         os.environ.pop(current_env_var, None)
 
-    # Clear Button: Allows user to immediately wipe the API key from volatile session memory
-    if current_key or api_key_input:
-        if st.button("🗑️ Clear API Key", key=f"clear_key_{provider}"):
-            st.session_state.api_keys[provider] = ""
-            os.environ.pop(current_env_var, None)
-            if f"widget_key_{provider}" in st.session_state:
-                st.session_state[f"widget_key_{provider}"] = ""
-            st.rerun()
+    # Clear Button: Safely wipes key using on_click callback without triggering Streamlit widget mutation error
+    if api_key_input or st.session_state.api_keys.get(provider, ""):
+        st.button(
+            "🗑️ Clear API Key",
+            key=f"clear_key_{provider}",
+            on_click=clear_api_key_callback,
+            args=(provider, current_env_var)
+        )
 
-    st.caption("🛡️ **Volatile Session Memory**: API keys are never stored on disk or files. They exist strictly in volatile memory during your active session.")
+    st.caption("🛡️ **Volatile Session Memory**: API keys start blank and exist strictly in temporary memory during your active session.")
 
     # 3. Dropdown: Select Model
     selected_model = st.selectbox(
