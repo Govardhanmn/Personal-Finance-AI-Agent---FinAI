@@ -642,7 +642,7 @@ with st.sidebar:
     # Top Branding Header
     st.markdown("""
     <div class="sidebar-brand-box">
-        <div class="sidebar-brand-icon">🤖</div>
+        <div class="sidebar-brand-icon">🧠</div>
         <div>
             <div class="sidebar-brand-title">FinAI</div>
             <div class="sidebar-brand-sub">Next-Generation Financial Intelligence</div>
