@@ -69,7 +69,7 @@ st.markdown("""
             radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05), transparent 50%) !important;
         background-attachment: fixed !important;
         color: #f8fafc !important;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
     }
 
     /* Transparent Header Bar & Hide Footer */
@@ -276,7 +276,11 @@ st.markdown("""
         justify-content: center;
         box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
     }
-    .main-header-title {
+    
+    /* Strict Header Title & Subtitle Styling across Local & Deployment */
+    h1.main-header-title,
+    .main-header-title,
+    div.main-header-banner h1 {
         font-size: 1.95rem !important;
         font-weight: 800 !important;
         color: #f8fafc !important;
@@ -284,16 +288,25 @@ st.markdown("""
         padding: 0 !important;
         line-height: 1.2 !important;
         letter-spacing: -0.02em !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     }
-    .main-header-title span {
-        background: linear-gradient(135deg, #38bdf8, #e2e8f0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+    h1.main-header-title span,
+    .main-header-title span,
+    div.main-header-banner h1 span {
+        background: linear-gradient(135deg, #38bdf8, #e2e8f0) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        color: transparent !important;
+        display: inline-block !important;
     }
-    .main-header-sub {
+    .main-header-sub,
+    div.main-header-banner div.main-header-sub {
         font-size: 0.88rem !important;
         color: #94a3b8 !important;
         margin-top: 0.2rem !important;
+        font-weight: 400 !important;
+        line-height: 1.4 !important;
     }
 
     /* Right Side Feature Badges */
