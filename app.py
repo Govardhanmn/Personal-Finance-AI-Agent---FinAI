@@ -42,22 +42,24 @@ load_dotenv()
 
 # Page configuration
 st.set_page_config(
-    page_title="FinAI – Your Wealth Assistant",
+    page_title="FinAI – Your Smart Financial Companion",
     page_icon="💳",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # ---------------------------------------------------------
-# CUSTOM STYLING — VISIBLE SIDEBAR COLLAPSE / EXPAND TOGGLE
+# CUSTOM STYLING — POPPINS TYPOGRAPHY & GRADIENT BRANDING
 # ---------------------------------------------------------
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
     :root {
         --border-color: transparent !important;
     }
 
-    /* Lock Page Body strictly to 100vh with Dark Midnight & Bright Silver-Grey Glow */
+    /* Lock Page Body strictly to 100vh with Poppins Font Family */
     html, body, .stApp {
         height: 100vh !important;
         max-height: 100vh !important;
@@ -69,7 +71,7 @@ st.markdown("""
             radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05), transparent 50%) !important;
         background-attachment: fixed !important;
         color: #f8fafc !important;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     }
 
     /* Transparent Header Bar & Hide Footer */
@@ -140,6 +142,7 @@ st.markdown("""
     
     [data-testid="stSidebar"] * {
         color: #cbd5e1 !important;
+        font-family: 'Poppins', sans-serif !important;
     }
 
     /* Sidebar Header Branding Box */
@@ -150,38 +153,42 @@ st.markdown("""
         margin-bottom: 0.2rem;
     }
     .sidebar-brand-icon {
-        background: linear-gradient(135deg, #2563eb, #64748b);
+        background: linear-gradient(135deg, #2563eb, #38bdf8);
         color: white;
-        font-size: 1.4rem;
-        padding: 8px 12px;
-        border-radius: 14px;
+        font-size: 1.25rem;
+        padding: 6px 10px;
+        border-radius: 12px;
         box-shadow: 0 4px 20px rgba(37, 99, 235, 0.45);
     }
     .sidebar-brand-title {
-        font-size: 1.35rem;
-        font-weight: 800;
-        color: #f8fafc !important;
+        font-size: 1.25rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #38bdf8, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         line-height: 1.2;
         letter-spacing: -0.02em;
+        font-family: 'Poppins', sans-serif !important;
     }
     .sidebar-brand-sub {
-        font-size: 0.82rem;
-        color: #64748b !important;
+        font-size: 0.74rem;
+        color: #94a3b8 !important;
+        font-weight: 400;
         line-height: 1.35;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1rem;
     }
 
     .sidebar-section-title {
-        font-size: 0.78rem;
-        font-weight: 800;
+        font-size: 0.75rem;
+        font-weight: 600;
         color: #3b82f6 !important;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin-top: 1rem;
-        margin-bottom: 0.8rem;
+        margin-top: 0.8rem;
+        margin-bottom: 0.6rem;
     }
 
-    /* Sidebar Input Overrides — Targeting Outer Wrappers strictly */
+    /* Sidebar Input Overrides */
     [data-testid="stSidebar"] div[data-baseweb="select"] > div,
     [data-testid="stSidebar"] div[data-baseweb="input"] {
         background: rgba(15, 23, 42, 0.6) !important;
@@ -214,14 +221,16 @@ st.markdown("""
 
     /* Sidebar Reset Action Button Only */
     [data-testid="stSidebar"] div.stButton > button {
-        background: linear-gradient(135deg, #2563eb, #475569) !important;
+        background: linear-gradient(135deg, #2563eb, #38bdf8) !important;
         border: none !important;
         border-radius: 12px !important;
         color: white !important;
         font-weight: 600 !important;
         box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4) !important;
-        padding: 10px 16px !important;
+        padding: 9px 14px !important;
         width: 100% !important;
+        font-size: 0.88rem !important;
+        font-family: 'Poppins', sans-serif !important;
     }
 
     /* Main Block Container */
@@ -249,10 +258,10 @@ st.markdown("""
         backdrop-filter: blur(24px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
         border: 1px solid rgba(59, 130, 246, 0.25) !important;
-        border-radius: 18px !important;
-        padding: 16px 24px !important;
+        border-radius: 16px !important;
+        padding: 14px 22px !important;
         margin-top: 0.2rem !important;
-        margin-bottom: 0.8rem !important;
+        margin-bottom: 0.7rem !important;
         width: 100% !important;
         box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 99, 235, 0.15) !important;
         display: flex;
@@ -262,149 +271,131 @@ st.markdown("""
     .main-header-left {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
     }
     .glowing-sparkle-badge {
         background: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(203, 213, 225, 0.35));
         border: 2px solid rgba(56, 189, 248, 0.6);
         border-radius: 50%;
-        width: 56px;
-        height: 56px;
-        font-size: 1.8rem;
+        width: 46px;
+        height: 46px;
+        font-size: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
     }
     
-    /* Strict Header Title & Subtitle Styling across Local & Deployment */
+    /* TIGHT ZERO-GAP HEADER TYPOGRAPHY */
     h1.main-header-title,
     .main-header-title,
     div.main-header-banner h1 {
-        font-size: 1.95rem !important;
-        font-weight: 800 !important;
-        color: #f8fafc !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 1.55rem !important;
         margin: 0 !important;
         padding: 0 !important;
-        line-height: 1.2 !important;
+        margin-bottom: 0px !important;
+        line-height: 1.15 !important;
         letter-spacing: -0.02em !important;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     }
-    h1.main-header-title span,
-    .main-header-title span,
-    div.main-header-banner h1 span {
-        background: linear-gradient(135deg, #38bdf8, #e2e8f0) !important;
+    .fin-brand-bold {
+        font-weight: 700 !important;
+        font-size: 1.55rem !important;
+        background: linear-gradient(135deg, #38bdf8, #2563eb) !important;
         -webkit-background-clip: text !important;
         background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
         color: transparent !important;
         display: inline-block !important;
     }
+    .fin-sub-regular {
+        font-weight: 400 !important;
+        font-size: 1.25rem !important;
+        color: #cbd5e1 !important;
+        -webkit-text-fill-color: #cbd5e1 !important;
+        display: inline-block !important;
+    }
     .main-header-sub,
     div.main-header-banner div.main-header-sub {
-        font-size: 0.88rem !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 0.76rem !important;
         color: #94a3b8 !important;
-        margin-top: 0.2rem !important;
+        margin-top: 2px !important;
+        padding-top: 0px !important;
+        margin-bottom: 0px !important;
         font-weight: 400 !important;
-        line-height: 1.4 !important;
+        line-height: 1.25 !important;
     }
 
     /* Right Side Feature Badges */
     .header-features-group {
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 16px;
     }
     .feature-item {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
     }
     .feature-icon {
         background: rgba(15, 23, 42, 0.6);
         border: 1px solid rgba(59, 130, 246, 0.3);
-        border-radius: 12px;
-        width: 38px;
-        height: 38px;
+        border-radius: 10px;
+        width: 34px;
+        height: 34px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     .feature-title {
-        font-size: 0.8rem;
-        font-weight: 700;
+        font-size: 0.75rem;
+        font-weight: 600;
         color: #f8fafc;
+        font-family: 'Poppins', sans-serif !important;
     }
     .feature-sub {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         color: #64748b;
+        font-family: 'Poppins', sans-serif !important;
     }
 
-    /* Welcome Banner Card (Inside Chat Box) */
-    .welcome-banner-card {
-        background: rgba(10, 15, 30, 0.65) !important;
-        backdrop-filter: blur(16px) saturate(180%) !important;
-        border: 1px solid rgba(59, 130, 246, 0.25) !important;
-        border-radius: 16px !important;
-        padding: 14px 22px !important;
-        margin-bottom: 1rem !important;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-    }
-    .welcome-banner-left {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 0.92rem;
-        color: #cbd5e1;
-        line-height: 1.4;
-    }
-    .welcome-banner-left b {
-        color: #38bdf8;
-    }
-    .welcome-chart-icon {
-        font-size: 1.9rem;
-        background: linear-gradient(135deg, #38bdf8, #e2e8f0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    /* Empty State Container */
+    /* Combined Hero Empty State Container */
     .empty-state-box {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 2.2rem 1rem;
+        padding: 3rem 1.5rem;
         text-align: center;
     }
     .empty-state-icon {
-        background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(226, 232, 240, 0.2));
-        border: 1px solid rgba(56, 189, 248, 0.4);
-        border-radius: 18px;
-        width: 68px;
-        height: 68px;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(56, 189, 248, 0.25));
+        border: 1px solid rgba(56, 189, 248, 0.45);
+        border-radius: 20px;
+        width: 64px;
+        height: 64px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.1rem;
+        font-size: 2rem;
         margin-bottom: 1rem;
-        box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+        box-shadow: 0 0 28px rgba(56, 189, 248, 0.35);
     }
     .empty-state-title {
-        font-size: 1.45rem;
-        font-weight: 800;
+        font-size: 1.4rem;
+        font-weight: 700;
         color: #f8fafc;
         margin-bottom: 0.4rem;
+        font-family: 'Poppins', sans-serif !important;
     }
     .empty-state-sub {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         color: #94a3b8;
-        max-width: 480px;
-        line-height: 1.45;
+        max-width: 520px;
+        line-height: 1.5;
+        font-family: 'Poppins', sans-serif !important;
     }
 
     /* User Chat Bubble — Dark Royal Blue Gradient Pill */
@@ -412,32 +403,33 @@ st.markdown("""
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        gap: 12px;
-        margin: 0.9rem 0;
+        gap: 10px;
+        margin: 0.8rem 0;
     }
     .user-bubble {
         background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(30, 64, 175, 0.9)) !important;
         backdrop-filter: blur(14px) !important;
         border: 1px solid rgba(147, 197, 253, 0.4) !important;
         color: #f8fafc !important;
-        padding: 12px 20px !important;
-        border-radius: 22px 22px 4px 22px !important;
+        padding: 10px 18px !important;
+        border-radius: 20px 20px 4px 20px !important;
         max-width: 78% !important;
-        font-size: 0.95rem !important;
+        font-size: 0.9rem !important;
         line-height: 1.5 !important;
-        font-weight: 500 !important;
+        font-weight: 400 !important;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+        font-family: 'Poppins', sans-serif !important;
     }
     .user-avatar {
         background: linear-gradient(135deg, #2563eb, #3b82f6);
         color: white;
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.95rem;
+        font-size: 0.88rem;
         font-weight: 700;
         box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
     }
@@ -446,19 +438,19 @@ st.markdown("""
     .ai-bubble-container {
         display: flex;
         align-items: flex-start;
-        gap: 12px;
-        margin: 0.9rem 0;
+        gap: 10px;
+        margin: 0.8rem 0;
     }
     .ai-avatar {
         background: linear-gradient(135deg, #059669, #047857);
         color: white;
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.05rem;
+        font-size: 0.95rem;
         box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
     }
     .ai-bubble {
@@ -467,12 +459,13 @@ st.markdown("""
         -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
         border: 1px solid rgba(59, 130, 246, 0.2) !important;
         color: #f8fafc !important;
-        padding: 16px 22px !important;
-        border-radius: 4px 22px 22px 22px !important;
+        padding: 14px 20px !important;
+        border-radius: 4px 20px 20px 20px !important;
         max-width: 86% !important;
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
+        font-size: 0.9rem !important;
+        line-height: 1.55 !important;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+        font-family: 'Poppins', sans-serif !important;
     }
 
     /* Animated Glass Loading Bubble */
@@ -490,15 +483,16 @@ st.markdown("""
         100% { box-shadow: 0 0 28px rgba(56, 189, 248, 0.5); }
     }
     .loading-text {
-        font-size: 0.92rem;
-        font-weight: 600;
+        font-size: 0.88rem;
+        font-weight: 500;
         color: #38bdf8;
+        font-family: 'Poppins', sans-serif !important;
     }
 
     /* Floating Glass Input Bar */
     [data-testid="stChatInput"] {
         position: fixed !important;
-        bottom: 30px !important;
+        bottom: 28px !important;
         left: calc(50% + 140px) !important;
         transform: translateX(-50%) !important;
         width: calc(100% - 360px) !important;
@@ -507,8 +501,8 @@ st.markdown("""
         background: rgba(10, 15, 30, 0.88) !important;
         backdrop-filter: blur(24px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-        border-radius: 36px !important;
-        padding: 4px 12px !important;
+        border-radius: 32px !important;
+        padding: 3px 10px !important;
         border: 1px solid rgba(59, 130, 246, 0.35) !important;
         box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(56, 189, 248, 0.2) !important;
     }
@@ -516,9 +510,10 @@ st.markdown("""
     [data-testid="stChatInput"] textarea {
         color: #f8fafc !important;
         background-color: transparent !important;
-        font-size: 1.02rem !important;
-        line-height: 1.5 !important;
-        font-weight: 500 !important;
+        font-size: 0.93rem !important;
+        line-height: 1.45 !important;
+        font-weight: 400 !important;
+        font-family: 'Poppins', sans-serif !important;
     }
 
     /* Glass Action Send Button */
@@ -527,23 +522,24 @@ st.markdown("""
         border-radius: 50% !important;
         color: white !important;
         border: none !important;
-        width: 40px !important;
-        height: 40px !important;
+        width: 36px !important;
+        height: 36px !important;
         box-shadow: 0 4px 16px rgba(37, 99, 235, 0.6) !important;
     }
 
     /* Bottom Security Note Below Input */
     .input-disclaimer-note {
         position: fixed;
-        bottom: 8px;
+        bottom: 6px;
         left: calc(50% + 140px);
         transform: translateX(-50%);
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         color: #64748b;
         z-index: 999999;
         display: flex;
         align-items: center;
         gap: 6px;
+        font-family: 'Poppins', sans-serif !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -564,7 +560,7 @@ with st.sidebar:
         <div class="sidebar-brand-icon">✨</div>
         <div>
             <div class="sidebar-brand-title">FinAI</div>
-            <div class="sidebar-brand-sub">Your Wealth Assistant</div>
+            <div class="sidebar-brand-sub">Your Smart Financial Companion</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -885,7 +881,9 @@ st.markdown("""
     <div class="main-header-left">
         <div class="glowing-sparkle-badge">✨</div>
         <div>
-            <h1 class="main-header-title">FinAI – <span>Your Wealth Assistant</span></h1>
+            <h1 class="main-header-title">
+                <span class="fin-brand-bold">FinAI</span> <span class="fin-sub-regular">– Your Smart Financial Companion</span>
+            </h1>
             <div class="main-header-sub">Personalized financial insights, planning tools, and real-time guidance.</div>
         </div>
     </div>
@@ -922,23 +920,15 @@ st.markdown("""
 chat_container = st.container(height=480)
 
 with chat_container:
-    # Render Welcome Banner & Empty State ONLY before conversation starts
+    # Single Combined Hero Empty State Card BEFORE conversation starts
     if not st.session_state.messages:
-        st.markdown("""
-        <div class="welcome-banner-card">
-            <div class="welcome-banner-left">
-                <span style="font-size:1.4rem;">👋</span>
-                <div><b>Welcome to FinAI.</b> Ask a question about loan EMIs, SIP growth, monthly budget splits, financial goals, or market news.</div>
-            </div>
-            <div class="welcome-chart-icon">📊</div>
-        </div>
-        """, unsafe_allow_html=True)
-
         st.markdown("""
         <div class="empty-state-box">
             <div class="empty-state-icon">💬</div>
             <div class="empty-state-title">How can I help you today?</div>
-            <div class="empty-state-sub">Ask anything related to your finances and I'll help you with insights, calculations, and recommendations.</div>
+            <div class="empty-state-sub">
+                Welcome to <b>FinAI</b>! Ask anything about loan EMIs, SIP growth, monthly budget splits, financial goals, or market news and I'll assist you with calculations and insights.
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
