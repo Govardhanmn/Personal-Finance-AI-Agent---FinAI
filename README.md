@@ -23,32 +23,53 @@ FinAI uses a suite of 6 specialized tools to execute precise calculations and fe
 
 ## 🚀 Full Application Functionalities
 
-1. AI Model Configuration Panel (Left Sidebar)
-•	LLM Provider Selection: Allows users to choose the underlying language model (e.g., Gemini).
-•	API Key Input: Securely stores and uses the user’s API credentials for model access.
-•	Model Selection: Lets users pick specific model variants for performance vs speed trade-offs.
-•	Temperature Control: Adjusts response creativity vs accuracy (lower = more deterministic financial outputs).
-•	Reset Conversation: Clears chat history and resets the session state for a fresh interaction.
-2. Central Interaction Panel
-•	Dynamic Chat Interface: Users can input natural language queries (e.g., “Calculate my EMI” or “Plan my SIP”).
-•	Context-Aware Responses: The agent uses conversation memory to refine and personalize responses over time.
-3. Intelligent Query Processing
-•	Converts user input into structured financial intent
-•	Automatically selects the correct backend tool (EMI, SIP, Budget, etc.)
-•	Ensures accurate, tool-driven computation rather than guesswork
-4. Financial Insight Generation
-•	Transforms raw calculations into:
-•	Actionable recommendations
-•	Savings health analysis
-•	Debt sustainability insights
-•	Investment projections
-5. Real-Time Capabilities
-•	Fetches live financial data such as inflation, market trends, and news
-•	Integrates external data into planning (especially for goal-based calculations)
-6. Stateful Conversation Management
-•	Maintains chat history and financial context
-•	Enables follow-up queries without re-entering data
-•	Supports multi-step financial planning workflows
+## 1. AI Model Configuration Panel (Left Sidebar)
+
+- **LLM Provider Selection**: Choose the underlying language model (e.g., Gemini)  
+- **API Key Input**: Securely enter API credentials  
+- **Model Selection**: Select model variants (performance vs speed)  
+- **Temperature Control**: Adjust creativity vs accuracy  
+- **Reset Conversation**: Clear chat history and restart session  
+
+---
+
+## 2. Central Interaction Panel
+
+- **Dynamic Chat Interface**: Ask queries like “Calculate EMI” or “Plan SIP”  
+- **Context-Aware Responses**: Uses memory to personalize replies  
+
+---
+
+## 3. Intelligent Query Processing
+
+- Converts user input into structured financial intent  
+- Automatically selects the correct tool (EMI, SIP, Budget, etc.)  
+- Ensures accurate, tool-driven computations  
+
+---
+
+## 4. Financial Insight Generation
+
+- Converts calculations into:
+  - Actionable recommendations  
+  - Savings health analysis  
+  - Debt insights  
+  - Investment projections  
+
+---
+
+## 5. Real-Time Capabilities
+
+- Fetches live data (inflation, market trends, news)  
+- Integrates real-time insights into financial planning  
+
+---
+
+## 6. Stateful Conversation Management
+
+- Maintains chat history and context  
+- Supports follow-up queries without re-entry  
+- Enables multi-step financial planning  
 
 ---
 
