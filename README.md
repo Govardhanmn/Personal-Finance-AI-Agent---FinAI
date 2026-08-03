@@ -9,6 +9,7 @@ By enforcing tool-driven Python execution, the system effectively eliminates num
 Beyond basic assistance, the system provides advanced financial diagnostics by analyzing key metrics such as Debt-to-Income ratios, savings rates, and inflation-adjusted forecasts, enabling users to gain a deeper understanding of their financial health. With support for multiple LLM providers, including OpenAI and Google Gemini, the platform offers flexibility in balancing performance, cost, and response speed.
 
 Paired with an intuitive Streamlit interface featuring configurable AI settings and real-time conversational capabilities, this solution presents a scalable, efficient, and modern alternative to traditional financial advisory services—empowering users to make well-informed decisions on borrowing, saving, investing, and long-term wealth creation.
+
 ---
 
 ## ⚙️ AI Tools & Capabilities Overview
