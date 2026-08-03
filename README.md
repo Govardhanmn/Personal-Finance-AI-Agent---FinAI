@@ -2,8 +2,13 @@
 
 > **Personalized financial insights, planning tools, and real-time guidance.**
 
-FinAI is an intelligent, agentic AI personal finance assistant built specifically for Indian users. Powered by **LangChain**, **Streamlit**, and multi-provider LLMs (OpenAI, Google Gemini), FinAI provides tool-driven financial calculations, investment compounding models, budget allocation strategies, and live financial market search.
+This AI Agent lays a robust foundation for a next-generation financial advisory ecosystem by integrating the reasoning power of Large Language Models with the precision of deterministic financial computations. It enables users to interact through natural language while delivering accurate, personalized, and context-aware insights across loans, investments, budgeting, and overall financial planning.
 
+By enforcing tool-driven Python execution, the system effectively eliminates numerical inconsistencies, ensuring reliable outputs for EMI calculations, SIP projections, budget allocation, and goal planning. Built on a LangChain ReAct-based architecture, the agent dynamically selects and executes the most relevant tools, incorporates real-time financial indicators such as inflation and market trends, and leverages session-based memory to maintain continuity across multi-step interactions.
+
+Beyond basic assistance, the system provides advanced financial diagnostics by analyzing key metrics such as Debt-to-Income ratios, savings rates, and inflation-adjusted forecasts, enabling users to gain a deeper understanding of their financial health. With support for multiple LLM providers, including OpenAI and Google Gemini, the platform offers flexibility in balancing performance, cost, and response speed.
+
+Paired with an intuitive Streamlit interface featuring configurable AI settings and real-time conversational capabilities, this solution presents a scalable, efficient, and modern alternative to traditional financial advisory services—empowering users to make well-informed decisions on borrowing, saving, investing, and long-term wealth creation.
 ---
 
 ## ⚙️ AI Tools & Capabilities Overview
